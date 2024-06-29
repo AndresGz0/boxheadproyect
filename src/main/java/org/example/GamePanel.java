@@ -8,6 +8,7 @@ import java.awt.Color;
 
 import org.example.Block.Block;
 import org.example.KeyInput.KeyInput;
+import org.example.Player.Enemy; //Agregado el enemigo
 import org.example.Player.Player;
 import org.example.Map.Map;
 public class GamePanel extends JPanel implements Runnable {
@@ -19,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     public static final int HEIGHT = 600; // Alto del panel del juego
 
     private Player player; // Jugador
+    private Enemy enemy;
     private Map map; // Mapa del juego
 
     // Constructor para configurar el panel del juego
@@ -62,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
         g = image.getGraphics(); // Obtener los gráficos de la imagen
 
         player = new Player(WIDTH / 2, HEIGHT / 2); // Crear un nuevo jugador en el centro de la pantalla
+        enemy = new Enemy(WIDTH /2, HEIGHT); // Enemy starts off-screen
         map = new Map(); // Crear un nuevo mapa
         addKeyListener(new KeyInput(player)); // Añadir el detector de teclas al panel
     }
@@ -69,6 +72,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Método para actualizar la lógica del juego
     private void update() {
         player.update(); // Actualizar la lógica del jugador
+        enemy.update(player); // Pass player as argument
         checkCollisions(); // Verificar colisiones
     }
 
@@ -79,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         map.render(g); // Dibujar el mapa
         player.render(g); // Dibujar el jugador
+        enemy.render(g);
     }
 
     // Método para dibujar el buffer en la pantalla
