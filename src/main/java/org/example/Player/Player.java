@@ -11,6 +11,14 @@ public class Player {
     private boolean up, down, left, right;
     /// Estado de las teclas, siendo presionadas o no
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
