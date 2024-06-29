@@ -22,7 +22,7 @@ public class Enemy extends Player{
         x += dx;
         y += dy;
 
-        constrainToBounds(); // (Assuming you have a similar method from Player class)
+        constrainToBounds();// (Assuming you have a similar method from Player class)
     }
     @Override
     public void render(Graphics g)

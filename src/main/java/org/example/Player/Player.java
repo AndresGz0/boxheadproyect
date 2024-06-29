@@ -68,7 +68,7 @@ public class Player {
             }
         }
     }
-    private void constrainToBounds() {
+    protected void constrainToBounds() {
         // Restringir el movimiento horizontal dentro de los límites de la ventana
         if (x < 0) {
             x = 0;
